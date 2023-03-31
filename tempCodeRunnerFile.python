@@ -1,23 +1,22 @@
-# If you’re given an array “X” comprising “n” positive integers, 
-# write a function to compute the inversion count of the array
+# How to find the missing number in a given integer array of 1 to 100? 
+def missingarr(nums: list[int]):
+    set_100 = set(i for i in range(1,10))
+    for num in nums:
+        set_100.discard(num)
+    ans = list(set_100)
+    return ans[0]
+    
 
-# INVERSION COUNT OF ARRAY IS THE TOTAL NUMBER OF SWAPS NEEDED TO SORT THE GIVEN ARRAY 
-# https://www.geeksforgeeks.org/inversion-count-in-array-using-merge-sort/
+print(missingarr(nums = [1,6,7,4,2,3,9,10,8]))
 
-# Python3 program to count
-# inversions in an array
+# method 2 - using total sum formula 
 
-def getInvCount(arr):
-    ans = 0 
-    n = len(arr)
-    for i in range(n):
-        for j in range(i+1, n):
-            if arr[i] > arr[j]:
-                ans += 1 
+def missingarr2(nums: list[int]):
+    total = ((10 + 1) * 10)/2
+    sum_arr = sum(nums)
+    ans = total - sum_arr 
     return ans 
 
-arr = [1,20,6,4,5]
-print(getInvCount(arr))
-            
-            
+print(missingarr(nums = [1,2,3,4,6,7,8,9,10]))
 
+    
